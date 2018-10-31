@@ -1,0 +1,1255 @@
+#: import CheckBox kivy.uix.checkbox
+
+
+
+ScreenManagement:
+	#transition: 
+	WelcomePage:                                      #this name is used as class in ps1.py
+	LoginPage:
+    UserPage:
+    WatchWindow:
+    AdminPage:
+    AnalysisPage:
+    
+#############################################################################################    
+<WelcomePage>:
+    name: "Welcome_page"                 #This name is used in ps1.py file to navigate from one page to another
+    
+    canvas:
+    	Rectangle:
+    		#source: 'IIT-Delhi.png'
+    		#source: 'iit-delhi.jpg'
+    		source: 'new.jpg'
+    		size: self.size
+    		pos: self.pos
+    		
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'top'
+
+        Image:
+            source: 'iitlogo.png'
+            size_hint: None, None
+            size: 300, 300			
+    
+     
+	# size_hint defines the widget width (0-1) representing
+	# a percentage of 100% and height of the window
+
+	    
+    GridLayout:
+    	rows: 4
+    	spacing:20
+    	
+    	FloatLayout:
+	    	
+	    #	Label:
+	    	#	font_size: 60
+	    	#	text: "Login As"
+	    		#color: 0, 0, 0, 1
+	    	#	pos_hint: {"x": -0.1, "y": -0.445}
+	    		  	
+	 	          	
+			Button:    
+	            text: "Student"
+	            font_size: 50
+	    	#	background_color: 0.75, .75, 0.75, .7
+	            size: 150, 40          #size of button background
+	            size_hint: .2, .08
+	            pos_hint: {"x": 0.3, "y": 0.02}
+	           # pos: 150,200            #button position
+	            on_release: root.login_as("student")
+	            
+	        Button:    
+	            text: "Admin"
+	            font_size: 50
+	          #  background_color: 1, 0, 0, .7	            
+	            size: 100, 40
+	            size_hint: .2, .08
+	            pos_hint: {"x": 0.6, "y": .02}
+	           # pos: 500, 200
+	            on_release: root.login_as('admin')   
+	            
+	             
+	            
+	            
+#############################################################################################
+<LoginPage>:
+    name: "login_page"
+    
+    canvas:
+    	Rectangle:
+    		source: '1.jpg'
+    		size: self.size
+    		pos: self.pos
+    		
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'top'
+
+        Image:
+            source: 'iitlogo.png'
+            size_hint: None, None
+            size: 300, 300		
+    
+     
+	# size_hint defines the widget width (0-1) representing
+	# a percentage of 100% and height of the window
+
+	    
+    GridLayout:
+    	rows: 4
+    	spacing:20
+    	
+    	
+    		
+    	
+    	FloatLayout: 	
+    	#name text    		
+    			  
+	    #name block to write  		
+        	TextInput:
+            	id: login                     #this login contain the enter text
+            	hint_text: "user name"
+            	size_hint: .2, .05
+            	font_size: 24
+	    		pos_hint: {"x": .4, "y": .55}    
+	    		mutliline: False     	
+            	
+		
+					
+        	TextInput:
+        		id: pass
+            	password: True 		# hide password
+            	hint_text: "****"
+            	font_size: 24
+            	size_hint: .2, .05
+	    		pos_hint: {"x": .4, "y": .45}    
+	    		mutliline: False 
+	    		
+	        Label:
+	            text: 'Remember my login'
+				font_size: 22
+	    		#color: 0, 0, 0, 1
+	    		size: 50, 40
+	    		background_color: .88, .88, .88, 1
+	    		size_hint: .2, .1
+	    		pos_hint: {"x": .39, "y": .35}	
+	    		
+	    	CheckBox:
+	    		id: checkbox              #checkbox.active
+	    		size_hint: .12, .12
+	    		#size: 200, 200
+	    		color: 0, 0, 0, 1
+	    		background_color: .88, .88, .88, 1
+	    		pos_hint: {"x": .345, "y": .34}	
+	    	   # on_active: checkbox.text: 'true'				
+            	
+            	
+			Button:    
+	            text: "Log in"
+	            #color: 0, 1, 0, .8
+	          #  background_color: 0, 1, 0, .75	    
+	            background_color: 0.62, 1, .2, 1        
+	            font_size: 30
+	            size: 100, 50
+	            size_hint: .2, .05
+	            pos_hint: {"x": .4, "y": 0.3}
+	            on_release: root.verify_credentials()
+	            
+	            
+	        Button:    
+	            text: "Home"
+	            font_size: 30
+	            size: 40, 40
+	            background_color: 0.21, 0.58, 1, .7            
+	            size_hint: .08, .05
+	            pos_hint: {"x": .82, "y": .88}
+	            
+                on_release: app.root.current = "Welcome_page"
+	            
+	            
+	            
+#############################################################################################
+
+	            
+	            
+
+#####################################################################################################################
+<UserPage>:
+    name: "user_page"
+        
+    canvas:
+    	Rectangle:
+    		#source: 'back3.jpg'
+    		source: '3.jpg'    		
+    		size: self.size
+    		pos: self.pos
+    
+     
+	# size_hint defines the widget width (0-1) representing
+	# a percentage of 100% and height of the window
+
+	    
+    FloatLayout:
+    	
+    	
+    	Label:
+    		font_size: 40
+    		text: "Entry Form"
+    		color: 0, 0, 0, 1
+    		size_hint: .4, .1
+    		pos_hint: {"x": 0.4, "y": .9}
+    		
+    	
+    	 	
+	#name text    		
+		Label:
+			text: "Name"          #This is text
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .82}	  
+    #name block to write  		
+    	TextInput:
+        	id: name                     #this login contain the enter text
+        	hint_text: "user name"
+        	size_hint: .4, .05
+    		pos_hint: {"x": .4, "y": .82}    
+    		mutliline: False     	
+    		write_tab: False
+        	
+	
+		Label:
+			text: "Entry_no"
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .74}					
+    	TextInput:
+    		id: entry_no
+    		hint_text: "Entry no"
+        	size_hint: .4, .05
+    		pos_hint: {"x": .4, "y": .74}    
+    		mutliline: False 
+    		write_tab: False
+    		
+	
+		Label:
+			text: "Branch"
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .66}					
+    	TextInput:
+    		id: branch
+    		hint_text: "branch"
+        	size_hint: .4, .05
+    		pos_hint: {"x": .4, "y": .66}    
+    		mutliline: False 	
+    		write_tab: False
+    		
+	
+		Label:
+			text: "year of passing"
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .58}					
+    	TextInput:
+    		id: year_of_passing
+    		hint_text: "yyyy"
+        	size_hint: .4, .05
+    		pos_hint: {"x": .4, "y": .58}    
+    		mutliline: False 	
+    		write_tab: False
+    		
+	
+		Label:
+			text: "Address"
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		
+			pos_hint: {"x": 0.1, "y": 0.5}
+     		    						
+    	TextInput:
+    		id: address
+    		hint_text: "address"
+        	size_hint: .4, .05
+    		pos_hint: {"x": .4, "y": 0.5}    
+    		mutliline: False 	
+    		write_tab: False 
+    		
+	
+		Label:
+			text: "subject1"
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .42}					
+    	TextInput:
+    		id: subject1
+    		hint_text: "Telecomm Signal Digital RF CCN ML"
+        	size_hint: .4, .05
+    		pos_hint: {"x": .4, "y": .42}    
+    		mutliline: False 	 
+    		write_tab: False   		   		    		    		
+        	
+        	
+        Label:
+			text: "subject2"
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .34}					
+    	TextInput:
+    		id: subject2
+    		hint_text: "Telecomm Signal Digital RF CCN ML"
+        	size_hint: .4, .05
+    		pos_hint: {"x": .4, "y": .34}    
+    		mutliline: False 	
+    		write_tab: False
+    		
+    	Label:
+			text: "subject3"
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .26}					
+    	TextInput:
+    		id: subject3
+    		hint_text: "Telecomm Signal Digital RF CCN ML"
+        	size_hint: .4, .05
+    		pos_hint: {"x": .4, "y": .26}    
+    		mutliline: False 	
+    		write_tab: False
+    		
+    	Label:
+			text: "subject4"
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .18}					
+    	TextInput:
+    		id: subject4
+    		hint_text: "Telecomm Signal Digital RF CCN ML"
+        	size_hint: .4, .05
+    		pos_hint: {"x": .4, "y": .18}    
+    		mutliline: False 	
+    		write_tab: False
+    		
+    	Label:
+			text: "subject5"
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .1}					
+    	TextInput:
+    		id: subject5
+    		hint_text: "Telecomm Signal Digital RF CCN ML"
+        	size_hint: .4, .05
+    		pos_hint: {"x": .4, "y": .1}    
+    		mutliline: False 	
+    		write_tab: False
+        	
+		Button:    
+            text: "Submit"
+            font_size: 30
+            background_color: 1, .2, .1, 1
+            size: 100, 50
+            size_hint: .1, .05
+            pos_hint: {"x": .5, "y": 0}
+            on_release: root.user_details(name,entry_no,branch,year_of_passing,address,subject1,subject2,subject3,subject4,subject5)          #Note we are using same function verify_credentials() beacuse class are different  as student and admin
+
+        Button:    
+            text: "Home"
+            font_size: 30
+            size: 30, 30
+	        background_color: 0.21, 0.58, 1, .7            
+            size_hint: .1, .04
+            pos_hint: {"x": .84, "y": .9}                  
+            on_release: app.root.current = "Welcome_page"        
+
+  
+        	
+
+###################################################################################################################        
+
+        
+        
+#####################################################################################################
+
+	
+    
+
+
+#####################################################################################################################
+<WatchWindow>:
+    name: "watch_window"    #for user
+        
+    canvas:
+    	Rectangle:
+    		#source: 'back3.jpg'
+    		source: '2.jpg'
+    		size: self.size
+    		pos: self.pos
+    
+     
+	# size_hint defines the widget width (0-1) representing
+	# a percentage of 100% and height of the window
+
+	    
+    FloatLayout:
+    	
+    	
+    #	Label:
+    	#	font_size: 40
+    	#	text: "User details"
+    	#	color: 0, 0, 0, 1
+    	#	size_hint: .4, .1
+    	#	pos_hint: {"x": 0, "y": .85}
+    		
+    	
+    	 	
+	#name text    		
+		Label:
+			id: name_h          #This is text
+			
+			font_size: 28
+    		color: 1, 1, 0.3, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .75}	  
+    #name block to write  		
+    	Label:
+        	id: name                      #this login contain the enter text
+        	font_size: 24
+        	color: 1, 1, 1, 1
+        	size_hint: .4, .05
+    		pos_hint: {"x": .35, "y": .75}    
+    		mutliline: False     	
+        	
+
+		Label:
+			id: entry_no_h
+			font_size: 24
+    		color: 1, 1, 0.3, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .68}					
+    	Label:
+    		id: entry_no
+    		font_size: 24
+    		color: 1, 1, 1, 1
+        	size_hint: .4, .05
+    		pos_hint: {"x": .35, "y": .68}    
+    		mutliline: False 
+    		
+	
+		Label:
+			id: branch_h
+			font_size: 24
+    		color: 1, 1, 0.3, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .61}					
+    	Label:
+    		id: branch
+    		color: 1, 1, 1, 1
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .35, "y": .609}    
+    		mutliline: False 	
+    		
+	
+		Label:
+			id: year_of_passing_h
+			font_size: 24
+    		color: 1, 1, 0.3, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .55}					
+    	Label:
+    		id: year_of_passing
+    		font_size: 24
+    		color: 1, 1, 1, 1
+        	size_hint: .4, .05
+    		pos_hint: {"x": .35, "y": .55}    
+    		mutliline: False 	
+    		
+	
+		Label:
+			id: address_h
+			font_size: 24
+    		color: 1, 1, 0.3, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .48}					
+    	Label:
+    		id: address
+    		color: 1, 1, 1, 1
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .35, "y": .48}    
+    		mutliline: False 	 
+    		
+	
+		Label:
+			id: subject1_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .41}					
+    	Label:
+    		id: subject1
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .35, "y": .41}    
+    		mutliline: False 	
+    		
+    	Label:
+    		id: marks1
+    		color: .75, .75, .75, 1
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .45, "y": .395}    
+    		mutliline: False 
+    		
+    		
+    	Label:
+			id: subject2_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .34}					
+    	Label:
+    		id: subject2
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .35, "y": .34}    
+    		mutliline: False 	
+    		
+    	Label:
+    		id: marks2
+    		color: .75, .75, .75, 1
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .45, "y": .33}    
+    		mutliline: False 	
+    			    		   		    		    		
+        Label:
+			id: subject3_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .27}					
+    	Label:
+    		id: subject3
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .35, "y": .27}    
+    		mutliline: False 	
+    		
+    	Label:
+    		id: marks3
+    		color: .75, .75, .75, 1
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .45, "y": .26}    
+    		mutliline: False 	
+    		
+    	Label:
+			id: subject4_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .20}					
+    	Label:
+    		id: subject4
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .35, "y": .20}    
+    		mutliline: False 	
+    		
+    	Label:
+    		id: marks4
+    		color: .75, .75, .75, 1
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .45, "y": .19}    
+    		mutliline: False 
+    		
+    	Label:
+			id: subject5_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .13}					
+    	Label:
+    		id: subject5
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .35, "y": .13}    
+    		mutliline: False 	
+    		
+    	Label:
+    		id: marks5
+    		color: .75, .75, .75, 1
+    		font_size: 24
+        	size_hint: .4, .05
+    		pos_hint: {"x": .45, "y": .13}    
+    		mutliline: False 		
+        	
+		Button:    
+            text: "Show Data"
+            font_size: 30
+            size: 100, 50
+            size_hint: .1, .05
+            background_color: 1, .2, .1, 1
+            pos_hint: {"x": .35, "y": 0.85}
+           # active: root.show_data()  #we can not use active bcoz it call the function multiple times
+            #default: root.show_data() 
+            on_release: root.show_data()          #Note we are using same function verify_credentials() beacuse class are different  as student and admin
+            #on_release: app.root.current = "Welcome_page"                
+      
+	    Button:    
+	        text: "Exit"
+	        font_size: 30
+	        background_color: 1, .2, .1, 1
+	        size: 100, 50
+	        size_hint: .1, .05
+	        pos_hint: {"x": .55, "y": 0.85}
+	        on_release: root.exit()
+	       # on_release: app.root.current = "Welcome_page"      
+  
+        	
+########################################################################################################################################
+<AdminPage>:
+    name: "admin_page"
+        
+    canvas:
+    	Rectangle:
+    		source: '3.jpg'
+    		size: self.size
+    		pos: self.pos
+    
+     
+	# size_hint defines the widget width (0-1) representing
+	# a percentage of 100% and height of the window
+
+	    
+    FloatLayout:
+    	
+    	
+    	Label:
+    		font_size: 40
+    		text: "Admin Login"
+    		color: 0, 0, 0, 1
+    		size_hint: .4, .2
+    		pos_hint: {"x": 0.2, "y": .85}
+    		
+    	
+    	 	
+	#name text    		
+		Label:
+			text: "Entry number"          #This is text
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .2, .05
+    		pos_hint: {"x": 0.2, "y": .8}	  
+    #name block to write  		
+    	TextInput:
+        	id: entry_no_enter                     #this login contain the enter text
+        	font_size: 22
+        	hint_text: "Entry no"
+        	size_hint: .2, .05
+    		pos_hint: {"x": .35, "y": .8}    
+    		mutliline: False     
+    		
+    	
+    	
+    	Label:
+			id: name_h          #This is text
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .7}		
+        			       	                                     
+        Label:
+			id: name         
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.35, "y": .7}	  
+     	
+        Label:
+			id: entry_no_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .63}	
+	
+		Label:
+			id: entry_no
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.35, "y": .63}					
+    
+    	Label:
+			id: branch_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .56}	
+	
+		Label:
+			id: branch
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.35, "y": .55}					
+ 	
+    	Label:
+			id: year_of_passing_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .49}	
+	
+		Label:
+			id: year_of_passing
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.35, "y": .49}					
+    		background_color: 1, .2, .1, 1
+    	Label:
+			id: address_h
+			font_size: 24
+    		color: 0, 0, 0, 1			
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .42}	
+	
+		Label:
+			id: address
+			font_size: 24
+    		color: 0, 0, 0, 1#color: 1, 1, 0., 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.35, "y": .42}					
+   	 
+    	Label:
+			id: subject1_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .35}	
+	
+		Label:
+			id: subject1
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.35, "y": .35}
+    		
+    	Label:
+			id: marks1
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.45, "y": .335}	
+    		
+    	Label:
+			id: subject2_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .28}	
+	
+		Label:
+			id: subject2
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.35, "y": .28}
+    		
+    	Label:
+			id: marks2
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.45, "y": .27}	
+    		
+    	Label:
+			id: subject3_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .21}	
+	
+		Label:
+			id: subject3
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.35, "y": .21}
+    		
+    	Label:
+			id: marks3
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.45, "y": .2}	
+    		
+    	Label:
+			id: subject4_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .14}	
+	
+		Label:
+			id: subject4
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.35, "y": .14}
+    		
+    	Label:
+			id: marks4
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.45, "y": .13}	
+    		
+    	Label:
+			id: subject5_h
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.22, "y": .07}	
+	
+		Label:
+			id: subject5
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.35, "y": .07}
+    		
+    	Label:
+			id: marks5
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.45, "y": .07}						
+    		    		     
+                     
+		Button:    
+            text: "Show details"
+            background_color: 1, .2, .1, 1
+            font_size: 30
+            size: 100, 50
+            size_hint: .1, .05
+            pos_hint: {"x": .56, "y": 0.8}
+            on_release: root.show_details() 
+                
+    
+  
+		Button:    
+            text: "Plot Graph"
+            background_color: 1, .2, .1, 1
+            font_size: 30
+            size: 100, 50
+            size_hint: .1, .05
+            pos_hint: {"x": .67, "y": 0.8}
+            on_release: root.plot_graph() 
+            
+		Button:    
+            text: "Analysis"
+            background_color: 1, .2, .1, 1
+            font_size: 30
+            size: 100, 50
+            size_hint: .1, .05
+            pos_hint: {"x": .78, "y": .8}
+            on_release: root.analysis()               
+            
+        Button:    
+            text: "Home"
+            font_size: 30
+            background_color: 0.21, 0.58, 1, .7
+            size: 40, 40
+            size_hint: .1, .04
+            pos_hint: {"x": .85, "y": .92}                  
+            on_release: root.admin_home()           	
+
+###################################################################################################################     
+<AnalysisPage>:
+    name: "analysis_page"
+        
+    canvas:
+    	Rectangle:
+    		source: '3.jpg'
+    		size: self.size
+    		pos: self.pos
+    
+     
+	# size_hint defines the widget width (0-1) representing
+	# a percentage of 100% and height of the window
+
+	    
+    FloatLayout:
+    	
+    	
+    	Label:
+    		font_size: 40
+    		text: "Analysis Page"
+    		color: 0, 0, 0, 1
+    		size_hint: .4, .1
+    		pos_hint: {"x": 0.27, "y": .9}
+    		
+    	
+    	 	
+	#name text    		
+		Label:
+			#id: entry number          #This is text
+			font_size: 28
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .7}	  
+
+        
+        Button:    
+            text: "Display top 5"
+            font_size: 30
+            background_color: 1, .2, .1, 1            
+            size: 150, 50
+            size_hint: .15, .05
+            pos_hint: {"x": 0.4, "y": 0.8}
+            on_release: root.show_toppres() 
+         
+        Button:    
+            text: "Show Avg Marks"
+            font_size: 30
+            background_color: 1, .2, .1, 1            
+            size: 150, 50
+            size_hint: .15, .05
+            pos_hint: {"x": .57, "y": 0.8}
+            on_release: root.plot_graph_avg() 
+           
+        Label:
+			id: sn
+			font_size: 24
+    		color: 1, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .7}	
+    		
+    	Label:
+			id: entry_no_h
+			font_size: 24
+    		color: 1, 0, 0, 1
+    		size: 150, 50
+    		background_color: .65, 1, .3, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.2, "y": .7}	
+    		
+    	Label:
+			id: name_h
+			font_size: 24
+    		color: 1, 0, 0, 1
+    		size: 150, 50
+    		background_color: .0, 1, .2, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.3, "y": .7}	
+    		
+    	Label:
+			id: marks_h
+			font_size: 24
+    		color: 1, 0, 0, 1
+    		size: 150, 50
+    		background_color: 1, .2, .0, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.4, "y": .7}	
+    		
+    	Label:
+			id: sn1
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: 1, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .6}	
+    		
+    	Label:
+			id: entry_no1
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: 1, 1, 0, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.2, "y": .6}	
+    		
+    	Label:
+			id: name1
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .1, .1, 1, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.3, "y": .6}	
+    		
+    	Label:
+			id: marks1
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.4, "y": .6}		  
+    		
+    		
+    	Label:
+			id: sn2
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .5}	
+    		
+    	Label:
+			id: entry_no2
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.2, "y": .5}	
+    		
+    	Label:
+			id: name2
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.3, "y": .5}	
+    		
+    	Label:
+			id: marks2
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.4, "y": .5}	
+    		
+    	Label:
+			id: sn3
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .4}	
+    		
+    	Label:
+			id: entry_no3
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.2, "y": .4}	
+    		
+    	Label:
+			id: name3
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.3, "y": .4}	
+    		
+    	Label:
+			id: marks3
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.4, "y": .4}
+    		
+    	Label:
+			id: sn4
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .3}	
+    		
+    	Label:
+			id: entry_no4
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.2, "y": .3}	
+    		
+    	Label:
+			id: name4
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.3, "y": .3}	
+    		
+    	Label:
+			id: marks4
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.4, "y": .3}	
+    		
+    	Label:
+			id: sn5
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.1, "y": .2}	
+    		
+    	Label:
+			id: entry_no5
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.2, "y": .2}	
+    		
+    	Label:
+			id: name5
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.3, "y": .2}	
+    		
+    	Label:
+			id: marks5
+			font_size: 24
+    		color: 0, 0, 0, 1
+    		size: 150, 50
+    		background_color: .88, .88, .88, 1
+    		size_hint: .4, .05
+    		pos_hint: {"x": 0.4, "y": .2}						
+           
+        Button:    
+            text: "Home"
+            font_size: 30
+            background_color: 0.21, 0.58, 1, .7
+            size: 40, 40
+            size_hint: .1, .04
+            pos_hint: {"x": .8, "y": .9}                  
+            on_release: root.home()    
+    
+	    
